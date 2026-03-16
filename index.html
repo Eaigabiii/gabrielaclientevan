@@ -274,6 +274,44 @@ section{padding:100px 0}@media(max-width:768px){section{padding:72px 0}}
 .lightbox-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:.7rem;color:var(--text-muted);letter-spacing:2px}
 @media(max-width:768px){.lightbox-nav{width:40px;height:40px;font-size:.85rem}.lightbox-prev{left:12px}.lightbox-next{right:12px}}
 
+
+/* PAYMENT POPUP */
+.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:250;justify-content:center;align-items:center;padding:20px}
+.popup-overlay.active{display:flex}
+.popup{background:#fff;border-radius:var(--radius-lg);max-width:680px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 32px 100px rgba(0,0,0,.25);position:relative;animation:popIn .35s ease}
+@keyframes popIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.popup-close{position:absolute;top:16px;right:16px;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-muted);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;transition:var(--transition);z-index:2}
+.popup-close:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
+.popup-header{padding:36px 36px 0;text-align:center}
+.popup-header .popup-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(158,124,60,.08);border:1px solid var(--border);border-radius:100px;font-family:var(--font-mono);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.popup-header h2{font-family:var(--font-display);font-size:1.6rem;font-weight:600;margin-bottom:6px;color:var(--text-primary)}
+.popup-header p{color:var(--text-secondary);font-size:.9rem}
+.popup-body{padding:32px 36px}
+.popup-highlight{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+@media(max-width:500px){.popup-highlight{grid-template-columns:1fr}}
+.popup-hl-card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center}
+.popup-hl-card.main{background:linear-gradient(135deg,rgba(158,124,60,.1),rgba(158,124,60,.03));border-color:var(--gold);grid-column:1/-1}
+.popup-hl-label{font-family:var(--font-mono);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.popup-hl-val{font-family:var(--font-display);font-size:1.5rem;color:var(--gold);font-weight:600}
+.popup-hl-card.main .popup-hl-val{font-size:2rem}
+.popup-hl-sub{font-size:.78rem;color:var(--text-muted);margin-top:4px}
+.popup-flow{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.popup-flow-header{background:linear-gradient(135deg,rgba(158,124,60,.08),rgba(158,124,60,.02));padding:16px 20px;font-family:var(--font-display);font-size:1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.popup-flow-header .tag{font-family:var(--font-mono);font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);background:rgba(158,124,60,.08);padding:4px 10px;border-radius:100px}
+.popup-row{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border-light)}
+.popup-row:last-child{border-bottom:none}
+.popup-row.accent{background:rgba(158,124,60,.04)}
+.popup-row-icon{width:36px;height:36px;border-radius:50%;background:var(--gold-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.8rem;flex-shrink:0}
+.popup-row-icon.green{background:rgba(61,138,86,.08);color:var(--green-soft);border-color:rgba(61,138,86,.2)}
+.popup-row-label{font-size:.88rem;color:var(--text-primary)}.popup-row-label span{display:block;font-size:.75rem;color:var(--text-muted);margin-top:2px}
+.popup-row-val{font-family:var(--font-mono);font-size:.88rem;font-weight:600;text-align:right;white-space:nowrap}
+.popup-row-val.gold{color:var(--gold)}
+.popup-divider{padding:12px 20px;font-family:var(--font-mono);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);background:var(--bg-secondary);border-bottom:1px solid var(--border-light)}
+.popup-footer{padding:0 36px 32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.popup-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:100px;font-family:var(--font-body);font-size:.82rem;font-weight:500;cursor:pointer;transition:var(--transition);text-decoration:none}
+.popup-btn-primary{background:var(--gold);color:#fff;border:none}.popup-btn-primary:hover{background:var(--gold-dark)}
+.popup-btn-secondary{background:transparent;border:1px solid var(--border);color:var(--text-secondary)}.popup-btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+
 </style>
 </head>
 <body>
@@ -293,7 +331,10 @@ section{padding:100px 0}@media(max-width:768px){section{padding:72px 0}}
     <h1>Estrutura patrimonial<br>com foco em <em>renda,<br>liquidez e presença<br>no Brasil</em></h1>
     <p class="hero-sub">Estratégia completa de aquisição patrimonial combinando imóvel na planta, consórcio inteligente e reserva com rendimento — desenhada para quem vive no exterior e quer construir patrimônio sólido em São Paulo.</p>
     <p class="hero-client"><i class="fas fa-user-circle"></i> Elaborado para <span>Gabriela Goes</span></p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
     <a href="#perfil" class="hero-cta">Ver estratégia completa <i class="fas fa-arrow-down"></i></a>
+    <button class="hero-cta" style="background:transparent;border:1.5px solid var(--gold-light);color:var(--gold-light);backdrop-filter:blur(8px)" onclick="document.getElementById('popupFluxo').classList.add('active')"><i class="fas fa-receipt"></i> Ver fluxo de pagamento</button>
+  </div>
   </div>
 </section>
 
@@ -411,11 +452,11 @@ section{padding:100px 0}@media(max-width:768px){section{padding:72px 0}}
       <div class="consorcio-detail"><span class="label">Crédito</span><span class="val gold">R$ 440.000,00</span></div>
       <div class="consorcio-detail"><span class="label">Prazo</span><span class="val">182 meses</span></div>
       <div class="consorcio-detail"><span class="label">Parcela mensal</span><span class="val">R$ 2.047,94</span></div>
-      <div class="consorcio-detail"><span class="label">Lance médio esperado</span><span class="val gold">R$ 150.000,00</span></div>
+      <div class="consorcio-detail"><span class="label">Lance médio esperado</span><span class="val gold">R$ 260.000,00</span></div>
     </div>
     <div class="consorcio-explain fade-in"><h3>Papel do consórcio na estratégia</h3>
       <p>O consórcio de R$ 440.000 foi dimensionado para cobrir o saldo de financiamento na entrega (R$ 440.399). Ao ser contemplada, Gabriela pode utilizar o crédito para quitar ou reduzir fortemente a dívida residual do imóvel.</p>
-      <p>A estratégia de lance (R$ 150.000) é planejada para próximo da entrega. Esse lance pode sair da reserva que vem rendendo CDI durante todo o período de obra.</p>
+      <p>A estratégia de lance (R$ 260.000) é planejada para próximo da entrega. Esse lance pode sair da reserva que vem rendendo CDI durante todo o período de obra.</p>
       <div style="margin-top:24px;padding:20px;background:rgba(158,124,60,0.07);border:1px solid var(--glass-border);border-radius:var(--radius)">
         <p style="font-size:.85rem;color:var(--text-primary);margin:0"><strong style="color:var(--gold)">Crédito:</strong> R$ 440.000 → <strong style="color:var(--gold)">Saldo:</strong> R$ 440.399</p>
         <p style="font-size:.82rem;color:var(--text-secondary);margin:8px 0 0">Crédito cobre praticamente 100% do saldo de financiamento.</p>
@@ -446,9 +487,9 @@ section{padding:100px 0}@media(max-width:768px){section{padding:72px 0}}
     <div class="scenario-card fade-in"><div class="scenario-header"><h3>Conservador</h3><p>Maior preservação de caixa</p></div>
       <div class="scenario-item"><span class="s-label">Entrada</span><span class="s-val">R$ 62.914</span></div><div class="scenario-item"><span class="s-label">Parcela mensal</span><span class="s-val">R$ 6.242</span></div><div class="scenario-item"><span class="s-label">Reserva mantida</span><span class="s-val">R$ 187.086</span></div><div class="scenario-item"><span class="s-label">Lance</span><span class="s-val">Sem lance</span></div><div class="scenario-item"><span class="s-label">Na entrega</span><span class="s-val">Financia saldo</span></div><div class="scenario-item"><span class="s-label">Reserva ao final*</span><span class="s-val positive">~R$ 242.000</span></div></div>
     <div class="scenario-card recommended fade-in"><div class="scenario-header"><h3>Estratégico</h3><p>Equilíbrio entre quitação e liquidez</p></div>
-      <div class="scenario-item"><span class="s-label">Entrada</span><span class="s-val">R$ 62.914</span></div><div class="scenario-item"><span class="s-label">Parcela mensal</span><span class="s-val">R$ 6.242</span></div><div class="scenario-item"><span class="s-label">Reserva inicial</span><span class="s-val">R$ 187.086</span></div><div class="scenario-item"><span class="s-label">Lance</span><span class="s-val">R$ 150.000</span></div><div class="scenario-item"><span class="s-label">Na entrega</span><span class="s-val positive">Quita com crédito</span></div><div class="scenario-item"><span class="s-label">Reserva ao final*</span><span class="s-val positive">~R$ 92.000</span></div></div>
+      <div class="scenario-item"><span class="s-label">Entrada</span><span class="s-val">R$ 62.914</span></div><div class="scenario-item"><span class="s-label">Parcela mensal</span><span class="s-val">R$ 6.242</span></div><div class="scenario-item"><span class="s-label">Reserva inicial</span><span class="s-val">R$ 187.086</span></div><div class="scenario-item"><span class="s-label">Lance</span><span class="s-val">R$ 260.000</span></div><div class="scenario-item"><span class="s-label">Na entrega</span><span class="s-val positive">Quita com crédito</span></div><div class="scenario-item"><span class="s-label">Reserva ao final*</span><span class="s-val positive">Reduzida</span></div></div>
     <div class="scenario-card fade-in"><div class="scenario-header"><h3>Patrimonial otimizado</h3><p>Máxima redução de passivo</p></div>
-      <div class="scenario-item"><span class="s-label">Entrada</span><span class="s-val">R$ 62.914</span></div><div class="scenario-item"><span class="s-label">Parcela mensal</span><span class="s-val">R$ 6.242</span></div><div class="scenario-item"><span class="s-label">Reserva inicial</span><span class="s-val">R$ 187.086</span></div><div class="scenario-item"><span class="s-label">Lance</span><span class="s-val">R$ 150.000</span></div><div class="scenario-item"><span class="s-label">Na entrega</span><span class="s-val positive">Quita e aporta</span></div><div class="scenario-item"><span class="s-label">Reserva ao final*</span><span class="s-val">Reduzida</span></div></div>
+      <div class="scenario-item"><span class="s-label">Entrada</span><span class="s-val">R$ 62.914</span></div><div class="scenario-item"><span class="s-label">Parcela mensal</span><span class="s-val">R$ 6.242</span></div><div class="scenario-item"><span class="s-label">Reserva inicial</span><span class="s-val">R$ 187.086</span></div><div class="scenario-item"><span class="s-label">Lance</span><span class="s-val">R$ 260.000</span></div><div class="scenario-item"><span class="s-label">Na entrega</span><span class="s-val positive">Quita e aporta</span></div><div class="scenario-item"><span class="s-label">Reserva ao final*</span><span class="s-val">Reduzida</span></div></div>
   </div>
   <p style="margin-top:20px;font-size:.75rem;color:var(--text-muted)">* Estimativas ilustrativas. CDI 10% a.a., líquido de IR. Não constitui promessa.</p>
 </div></section>
@@ -486,7 +527,7 @@ section{padding:100px 0}@media(max-width:768px){section{padding:72px 0}}
   <div class="timeline">
     <div class="tl-item fade-in-left"><div class="tl-dot"></div><div class="tl-date">Agora — 2025</div><h4>Aquisição e entrada</h4><p>Assinatura da unidade no The Collection Vila Mariana. Entrada de R$ 62.914,20 + parcelas de R$ 4.194,28. Consórcio Canopus R$ 2.047,94/mês.</p></div>
     <div class="tl-item fade-in-left"><div class="tl-dot"></div><div class="tl-date">2025 — 2028</div><h4>Fase de obra — reserva rendendo</h4><p>R$ 187.086 em CDI. Parcela combinada R$ 6.242 dentro do planejamento de R$ 1.173/mês.</p></div>
-    <div class="tl-item fade-in-left"><div class="tl-dot"></div><div class="tl-date">Meados de 2028</div><h4>Preparação para contemplação</h4><p>Lance de R$ 150.000 da reserva já valorizada pelo CDI.</p></div>
+    <div class="tl-item fade-in-left"><div class="tl-dot"></div><div class="tl-date">Meados de 2028</div><h4>Preparação para contemplação</h4><p>Lance de R$ 260.000 da reserva já valorizada pelo CDI.</p></div>
     <div class="tl-item fade-in-left"><div class="tl-dot"></div><div class="tl-date">Agosto de 2028</div><h4>Entrega e quitação</h4><p>Crédito de R$ 440.000 quita saldo de R$ 440.399. Chaves recebidas.</p></div>
     <div class="tl-item fade-in-left"><div class="tl-dot"></div><div class="tl-date">A partir de 2028</div><h4>Monetização do ativo</h4><p>Locação + base pessoal nos meses no Brasil.</p></div>
   </div>
@@ -603,7 +644,98 @@ document.addEventListener('keydown',function(e){
 });
 initLightbox();
 
+document.getElementById('popupFluxo').addEventListener('click',function(e){if(e.target===this)this.classList.remove('active')});
+
+
 </script>
+
+
+<!-- PAYMENT POPUP -->
+<div class="popup-overlay" id="popupFluxo">
+  <div class="popup">
+    <button class="popup-close" onclick="document.getElementById('popupFluxo').classList.remove('active')"><i class="fas fa-times"></i></button>
+    
+    <div class="popup-header">
+      <div class="popup-badge"><i class="fas fa-building"></i> The Collection Vila Mariana</div>
+      <h2>Fluxo de Pagamento</h2>
+      <p>Apartamento 2 Dormitórios — acima do 8º andar</p>
+    </div>
+    
+    <div class="popup-body">
+      <div class="popup-highlight">
+        <div class="popup-hl-card main">
+          <div class="popup-hl-label">Valor do imóvel</div>
+          <div class="popup-hl-val">R$ 629.142,00</div>
+        </div>
+        <div class="popup-hl-card">
+          <div class="popup-hl-label">Durante a obra (30%)</div>
+          <div class="popup-hl-val">R$ 188.742</div>
+          <div class="popup-hl-sub">Entrada + 30 parcelas</div>
+        </div>
+        <div class="popup-hl-card">
+          <div class="popup-hl-label">Financiamento (70%)</div>
+          <div class="popup-hl-val">R$ 440.399</div>
+          <div class="popup-hl-sub">Na entrega das chaves</div>
+        </div>
+      </div>
+
+      <div class="popup-flow">
+        <div class="popup-flow-header">Detalhamento do fluxo <span class="tag">Previsão Ago/2028</span></div>
+        
+        <div class="popup-row accent">
+          <div class="popup-row-icon"><i class="fas fa-key"></i></div>
+          <div class="popup-row-label">Entrada (10% à vista)<span>Pagamento na assinatura do contrato</span></div>
+          <div class="popup-row-val gold">R$ 62.914,20</div>
+        </div>
+        
+        <div class="popup-divider">Durante a obra — 30 meses</div>
+        
+        <div class="popup-row">
+          <div class="popup-row-icon"><i class="fas fa-calendar"></i></div>
+          <div class="popup-row-label">30 parcelas mensais (20%)<span>R$ 125.828,40 no total</span></div>
+          <div class="popup-row-val gold">R$ 4.194,28/mês</div>
+        </div>
+        
+        <div class="popup-row">
+          <div class="popup-row-icon"><i class="fas fa-handshake"></i></div>
+          <div class="popup-row-label">Consórcio (crédito R$ 440.000)<span>Canopus — Grupo 6620 — 182 meses</span></div>
+          <div class="popup-row-val gold">R$ 2.047,94/mês</div>
+        </div>
+        
+        <div class="popup-row accent">
+          <div class="popup-row-icon"><i class="fas fa-calculator"></i></div>
+          <div class="popup-row-label">Comprometimento mensal total<span>Parcela do imóvel + parcela do consórcio</span></div>
+          <div class="popup-row-val" style="font-size:1.05rem;color:var(--text-primary)">R$ 6.242,22/mês</div>
+        </div>
+        
+        <div class="popup-divider">Na entrega das chaves — Agosto 2028</div>
+        
+        <div class="popup-row">
+          <div class="popup-row-icon green"><i class="fas fa-file-invoice-dollar"></i></div>
+          <div class="popup-row-label">Saldo a financiar (70%)<span>Equacionado com contemplação do consórcio</span></div>
+          <div class="popup-row-val gold">R$ 440.399,40</div>
+        </div>
+        
+        <div class="popup-row">
+          <div class="popup-row-icon green"><i class="fas fa-bullseye"></i></div>
+          <div class="popup-row-label">Lance médio esperado<span>Para contemplação próxima da entrega</span></div>
+          <div class="popup-row-val gold">R$ 260.000,00</div>
+        </div>
+        
+        <div class="popup-row accent">
+          <div class="popup-row-icon green"><i class="fas fa-check-circle"></i></div>
+          <div class="popup-row-label">Crédito do consórcio<span>Cobre o saldo de financiamento na entrega</span></div>
+          <div class="popup-row-val" style="font-size:1.05rem;color:var(--green-soft)">R$ 440.000,00</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="popup-footer">
+      <button class="popup-btn popup-btn-primary" onclick="document.getElementById('popupFluxo').classList.remove('active');document.getElementById('modalFluxo').classList.add('active')"><i class="fas fa-table"></i> Ver tabela mês a mês</button>
+      <button class="popup-btn popup-btn-secondary" onclick="document.getElementById('popupFluxo').classList.remove('active');document.getElementById('imovel').scrollIntoView({behavior:'smooth'})"><i class="fas fa-building"></i> Ver o empreendimento</button>
+    </div>
+  </div>
+</div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
